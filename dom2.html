@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student DOM Manipulation Example (Simple)</title>
+</head>
+<body>
+    <h2 id="formTitle">Student Form</h2>
+    <form id="studentForm">
+    <label>Name: <input type="text" id="studentName" placeholder="Enter Name"></label><br><br>
+    <label>Roll No: <input type="text" id="studentRoll" placeholder="Enter RollNo"></label><br><br>
+    <button type="button" onclick="addStudent()">Add Student</button>
+</form>
+
+    <ul id="studentList"></ul>
+    <button onclick="clearList()">Clear All Students</button>
+
+    <script>
+        function addStudent() {
+            const name = document.getElementById("studentName").value;
+            const roll = document.getElementById("studentRoll").value;
+            const listItem = document.createElement("li");
+            listItem.textContent = "Name: " + name + ", Roll no: " + roll + " ";
+            const deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete";
+            
+            deleteBtn.onclick = function () {
+            listItem.remove();
+            };
+            listItem.appendChild(deleteBtn);
+            document.getElementById("studentList").appendChild(listItem);
+            document.getElementById("studentName").value = "";
+            document.getElementById("studentRoll").value = "";
+        }
+        function clearList() {
+            document.getElementById("studentList").innerHTML = "";
+        }
+    </script>
+</body>
+</html>
